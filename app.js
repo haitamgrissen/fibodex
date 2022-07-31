@@ -4,6 +4,7 @@ let 	selected = null;
 let 	illustartion = document.querySelector('.poke-illustaration');
 
 const allowShiny = false;
+let isChangingRegion = false;
 
 
 let allowRegionChange = false;
@@ -156,18 +157,24 @@ async function selectPokemonByListClick () {
 
 async function selectPokemonbyId(id)
 {
-	const res = await fetch(pokdexURL + id);
-	let pokemon = await res.json();
-
-	updateSelection(pokemon);
+	try{
+		const res = await fetch(pokdexURL + id);
+		let pokemon = await res.json();
+		updateSelection(pokemon);
+	} catch{
+		alert('Pokemon doesnt exist');
+	}
 }
 
 async function selectPokemonbyName(name)
 {
-	const res = await fetch(pokdexURL + name);
-	let pokemon = await res.json();
-
-	updateSelection(pokemon);
+	try {
+		const res = await fetch(pokdexURL + name);
+		let pokemon = await res.json();
+		updateSelection(pokemon);
+	} catch{
+		alert('Pokemon doesnt exist');
+	}
 }
 
 function	creatPokemonListEntry(pokemon){
@@ -177,14 +184,19 @@ function	creatPokemonListEntry(pokemon){
 	listDiv.dataset['id'] = `${pokemon.id}`;		
 
 
+	const rightDiv = document.createElement('div');
+	rightDiv.classList.add('list-right');
 
 	const listNameH1 = document.createElement('h1');
 	listNameH1.classList.add('poke-list-name');
-
-
 	const name = `${pokemon.name}`;
 	listNameH1.textContent = name;
 
+	const listBall = document.createElement('img');
+	listBall.classList.add('pokeball-sprite');
+	listBall.src = 'balltest.svg';
+
+	rightDiv.append(listNameH1, listBall);
 
 	const leftDiv = document.createElement('div');
 	leftDiv.classList.add('list-left');
@@ -206,7 +218,7 @@ function	creatPokemonListEntry(pokemon){
 	leftDiv.appendChild(listNoH1);
 
 
-	listDiv.appendChild(listNameH1);
+	listDiv.appendChild(rightDiv);
 	listDiv.appendChild(leftDiv);
 	nameListDiv.append(listDiv);
 	listDiv.addEventListener('click', selectPokemonByListClick);
@@ -220,32 +232,65 @@ async function getPokemon(id){
 
 async function loadPokedex(){
 	allowRegionChange = false;
-	for(let i = selectedRegion.min; i < selectedRegion.max + 1; i++)
+	for(let i = selectedRegion.min; i < selectedRegion.max + 1; i++){
+		if (isChangingRegion)
+			break;
 		await getPokemon(i);
+	}
 	allowRegionChange = true;
 }
 
 selectPokemonbyId(selectedRegion.min);
 loadPokedex();
-
+initDropDowns();
 
 
 function changeRegion(){
 	
 	const region = this.getAttribute('data-region');
-	if (!region || region === selectedRegion.region || !allowRegionChange)
+	if (!region || region === selectedRegion.region)
 		return ;
+	isChangingRegion = true;
+	if (!allowRegionChange)
+		return;
+	isChangingRegion = false;
 	removeChildren(nameListDiv);
 	selectedRegion = regions[region];
 	selectPokemonbyId(selectedRegion.min);
 	loadPokedex();
+
 }
 
-const regionDropDown = document.querySelector('#dropdown-regions');
 
-const childern = regionDropDown.childNodes;
+function initDropDowns(){
+
+	const regionDropDown = document.querySelector('#dropdown-regions');
+	
+	const childern = regionDropDown.childNodes;
+	
+	
+	childern.forEach(regionButton => {
+		regionButton.addEventListener('click', changeRegion);
+	});
 
 
-childern.forEach(regionButton => {
-	regionButton.addEventListener('click', changeRegion);
+}
+
+
+
+
+
+
+const input = document.querySelector("input");
+input.addEventListener("keyup", (event) => {
+  if (event.key === "Enter") {
+	let searchQuery = input.value;
+	if (typeof searchQuery == 'string')
+	{
+		searchQuery = searchQuery.toLowerCase();
+		selectPokemonbyName(searchQuery);
+	}
+	else if (typeof searchQuery == 'number')
+		selectPokemonbyId(searchQuery);
+  }
 });

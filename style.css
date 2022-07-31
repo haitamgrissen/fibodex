@@ -19,8 +19,26 @@
 }
 
 
+#title{
+	color: white;
+	transform: translate(10px, 0px);
+	font-size: 1rem;
+	display: flex;
+	align-items: center;
+	gap: 0px;
 
+	letter-spacing: 0.3em;
 
+}
+#title-svg{
+	transform: translate(-0.2rem,0px);
+	width: 	3rem;
+	height: 3rem;
+}
+#title-svg:hover{
+	width: 	3.3rem;
+	height: 3.3rem;
+}
 
 @media screen and (max-width: 768px){
 
@@ -51,10 +69,7 @@
 		align-items: center;
 	
 	}
-	#title{
-		transform: translate(10px, 0px);
-		font-size: 2rem;
-	}
+
 	
 	.nav-buttons{
 		display: flex;
@@ -148,7 +163,8 @@
 		justify-self: flex-start;
 		align-items: center;
 	}
-	
+
+
 	.poke-sprite{
 		transform: translate(-10px, -10px);
 		padding: 10px;
@@ -284,12 +300,6 @@
 }
 
 
-
-
-
-
-
-
 @media screen and (max-width: 1024px) and (min-width: 769px) {
 
 body {
@@ -320,10 +330,7 @@ nav{
 	align-items: center;
 
 }
-#title{
-	transform: translate(10px, 0px);
-	font-size: 2rem;
-}
+
 
 .nav-buttons{
 	display: flex;
@@ -570,10 +577,6 @@ nav{
 		align-items: center;
 	
 	}
-	#title{
-		transform: translate(10px, 0px);
-		font-size: 2rem;
-	}
 	
 	.nav-buttons{
 		display: flex;
@@ -804,29 +807,29 @@ nav{
 
 
 
-#regions {
+#regions, #search {
 	cursor: pointer;
 }
   
-  /* The container <div> - needed to position the dropdown content */
-  #regions {
+
+#regions, #search {
 	position: relative;
 	display: inline-block;
   }
   
-  /* Dropdown Content (Hidden by Default) */
-  #dropdown-regions {
+
+  #dropdown-regions, #dropdown-search {
 	display: none;
 	position: absolute;
 	background-color: #f9f9f9;
 	border-radius: 5px 30px 5px 30px;
 	min-width: 160px;
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-	z-index: 10;
+	z-index: 100;
   }
   
-  /* Links inside the dropdown */
-  #dropdown-regions h2 {
+
+  #dropdown-regions h2, #dropdown-search input {
 	color: black;
 	margin: 10px;
 	padding: 12px 16px;
@@ -834,16 +837,64 @@ nav{
 	display: block;
   }
   
-  /* Change color of dropdown links on hover */
+
   #dropdown-regions h2:hover {
 	color: #f1f1f1;
 	background-color: #464646;
 	border-radius: 15px;
 }
   
-  /* Show the dropdown menu on hover */
+
   #regions:hover #dropdown-regions {
 	display: block;
   }
   
+
+  #dropdown-search input:hover {
+	color: #f1f1f1;
+	background-color: #464646;
+	border-radius: 15px;
+}
+
+#search:hover #dropdown-search {
+	display: block;
+}
+
+#dropdown-search{
+	transform: translate(-150px, 0px);
+}
+
+input {
+	color: #ffffff;
+	background-color: #464646;
+	border-radius: 15px;
+}
+
+
+
+
+
+.list-right{
+	display: flex;
+	justify-self: flex-start;
+	align-items: center;
+}
+
+.pokeball-sprite{
+	visibility: hidden;
+	padding: 10px;
+	height: 3rem;
+	width: 	3rem;
+}
+
+
+.selected > .list-right > .pokeball-sprite{
+	visibility: visible;
+}
+
+
+
+
+
+
 

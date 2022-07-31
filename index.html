@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title></title>
+		<title>FiboDex</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="style.css">
@@ -12,9 +12,13 @@
 	</head>
 	<body>
 		<nav>
-			<h1 id="title">Fibodex</h1>
+			<div id="title">
+				<h1>FIB</h1>
+				<img id="title-svg" src="pokeball.svg" alt="pokeball">
+				<h1>DEX</h1>
+			</div>
 			<div class="nav-buttons">
-				<button class="nav-button" id="regions">Pokedex	
+				<button class="nav-button" id="regions">Regions	
 					<div id="dropdown-regions">
 					  <h2 data-region="kanto">Kanto</h2>
 					  <h2 data-region="johto">Johto</h2>
@@ -27,8 +31,10 @@
 				<button class="nav-button" id="items">Items		
 
 				</button>
-				<button class="nav-button" id="moves">Moves		
-
+				<button class="nav-button" id="search">Search		
+					<div id="dropdown-search">
+						<input class="search-bar" name="q" type="text" placeholder="Enter Name/Number"  /></div>
+					</div>
 				</button>
 			</div>
 		</nav>
@@ -37,7 +43,7 @@
 
 			</div>
 			<div class="blocks infos">
-				<img class="poke-illustaration" src="" alt="pokemon name">
+				<img class="poke-illustaration" src="" alt="Pokemon Sprite">
 				<h1	class="info-name"></h1>
 				<div class="poke-type"></div>
 				<div class="poke-base"></div>
