@@ -4,34 +4,45 @@ let 	selected = null;
 let 	illustartion = document.querySelector('.poke-illustaration');
 
 const allowShiny = false;
+
+
+let allowRegionChange = false;
+
 const		regions = {
 	'kanto': {
 		'min': 1,
 		'max': 151,
+		'region': 'kanto',
 	},
 	'johto': {
 		'min': 152,
 		'max': 251,
+		'region': 'johto',
 	},
 	'hoenn': {
 		'min': 252,
 		'max': 386,
+		'region': 'hoenn',
 	},
 	'sinnoh': {
 		'min': 387,
 		'max': 493,
+		'region': 'sinnoh',
 	},
 	'unova': {
 		'min': 494,
 		'max': 649,
+		'region': 'unova',
 	},
 	'kalos': {
 		'min': 650,
 		'max': 720,
+		'region': 'kalos',
 	},
 	'all': {
 		'min': 1,
 		'max': 720,
+		'region': 'all',
 	},
 }
 
@@ -208,10 +219,33 @@ async function getPokemon(id){
 }
 
 async function loadPokedex(){
+	allowRegionChange = false;
 	for(let i = selectedRegion.min; i < selectedRegion.max + 1; i++)
 		await getPokemon(i);
-
+	allowRegionChange = true;
 }
 
 selectPokemonbyId(selectedRegion.min);
 loadPokedex();
+
+
+
+function changeRegion(){
+	
+	const region = this.getAttribute('data-region');
+	if (!region || region === selectedRegion.region || !allowRegionChange)
+		return ;
+	removeChildren(nameListDiv);
+	selectedRegion = regions[region];
+	selectPokemonbyId(selectedRegion.min);
+	loadPokedex();
+}
+
+const regionDropDown = document.querySelector('#dropdown-regions');
+
+const childern = regionDropDown.childNodes;
+
+
+childern.forEach(regionButton => {
+	regionButton.addEventListener('click', changeRegion);
+});

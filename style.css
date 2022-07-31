@@ -19,219 +19,6 @@
 }
 
 
-/*
-body {
-	background: rgb(255,238,216);
-	background: linear-gradient(90deg, rgba(255,238,216,1) 0%, rgba(255,238,216,1) 10%, rgba(178,242,255,1) 50%);
-
-
-
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-
-	margin: 0;
-	height: 100%;
-	overflow: hidden
-}
-
-
-
-
-
-nav{
-	background-color: rgba(85, 85, 85, 0.31);
-	transform: translate(0px, 20px);
-	height: 5vh;
-	color: black;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-
-}
-#title{
-	transform: translate(10px, 0px);
-	font-size: 2vw;
-}
-
-.nav-buttons{
-	display: flex;
-	justify-content: end;
-	align-items: center;
-}
-.nav-button{
-	background-color: rgb(66, 66, 66);
-	color:white;
-	font-size: 150%;
-	border: 1px solid rgb(66, 66, 66);
-	border-radius: 10px;
-	margin: 10px;
-	width: 10vw;
-}
-.nav-button:hover{
-	background-color: white;
-	border-color: white;
-	color:black;
-	transform: translate(-40px, 0px);
-	box-shadow: 10px 10px 10px 0px rgba(30, 30, 30, 0.75);
-}
-
-.container{
-
-
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	flex-direction: row-reverse;
-	
-	height: 90%;
-	background-image: url(test.svg);
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-
-}
-
-.blocks{
-	height: 90vh;
-	margin: 10vw;
-}
-
-.line{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-#bg{
-	background-color: lightgreen;
-	width: 100vw;
-	height:100vh;
-}
-
-.name-list{
-	position: relative;
-	transform: translate(0px,  -250px);
-	width:  30vw;
-	height: 80vh;
-	overflow-y: auto;
-}
-
-
-.name-list::-webkit-scrollbar{
-	width: .5vw;
-	background-color: rgb(25, 162, 189);
-}
-.name-list::-webkit-scrollbar-thumb{
-	width: .5vw;
-	height: 8px;
-	background-color: rgb(27, 233, 252);
-}
-
-
-
-.poke-list{
-
-
-
-	display: flex;
-	flex-direction: row-reverse;
-	justify-content: space-around;
-	align-items: center;
-
-	margin: 15px;
-
-	height: 100px;
-
-
-
-}
-
-
-.unselected:hover{
-	
-	transform: translate(-10px, 0px);
-
-	box-shadow: 10px 10px 10px 0px rgba(30, 30, 30, 0.75);
-	border: 2px solid white;
-
-	transition: all .2s ease;
-
-	border-radius: 110px;
-}
-
-.selected{
-	color: white;
-	background: black;
-	background: linear-gradient(-45deg, black 0%, black 49%, rgb(61, 223, 255) 50%, rgb(61, 223, 255) 100%);
-	transform: translate(-15px, -10px);
-
-	box-shadow: 10px 10px 10px 0px rgba(30, 30, 30, 0.75);
-	border: 5px solid linear-gradient(-45deg, black 0%, black 49%, rgb(61, 223, 255) 50%, rgb(61, 223, 255) 100%);
-	transition: all .07s ease;
-	border-radius: 110px;
-}
-
-.poke-type{
-	display: flex;
-	justify-content: space-around;
-	align-items: flex-end;
-}
-
-.type-box{
-	font-weight: bold;
-	font-size: 2em;
-	color:white;
-	width: 10vw;
-	height: 5vw;
-	text-align: center;
-	text-justify: center;
-	border-radius: 1em;
-	box-shadow: 10px 10px 10px 0px rgba(30, 30, 30, 0.75);
-
-}
-
-.poke-sprite{
-	padding: 10px;
-	height: 50px;
-	width: 50px;
-}
-
-
-
-.infos{
-	width: 25vw;
-}
-
-.poke-base{
-	text-align:left;
-	width: 25vw;
-	background-color: rgba(255, 250, 243, .2);
-	border-radius: 1em;
-	box-shadow: 10px 10px 10px 0px rgba(30, 30, 30, 0.75);
-}
-
-.poke-list-name{
-	position: absolute;
-	left: 55%;
-}
-
-.poke-list-text{
-	color: white;
-	padding: 10px;
-}
-
-.list-left{
-	position: absolute;
-	left: 0%;
-	display: flex;
-	justify-self: flex-start;
-	align-items: center;
-}
-
-
-*/
-
-
-
 
 
 
@@ -322,8 +109,6 @@ nav{
 		border: 2px solid rgb(25, 162, 189);
 		border-radius: 10px;
 		overflow-y: auto;
-
-		scroll-snap-type: y mandatory;
 	}
 	
 	.name-list::-webkit-scrollbar{
@@ -356,9 +141,6 @@ nav{
 
 		font-size: .5rem;
 		color: black;
-
-		scroll-snap-align: start;
-
 	}
 
 	.list-left{
@@ -586,13 +368,8 @@ nav{
 
 
 .name-list{
-	/* background-color: rgb(25, 162, 189);
-	box-shadow: 10px 10px 10px 0px rgba(30, 30, 30, 0.75);
-	border: 2px solid rgb(25, 162, 189);
-	border-radius: 10px; */
 	overflow-y: auto;
 
-	scroll-snap-type: y mandatory;
 }
 
 
@@ -625,9 +402,6 @@ nav{
 
 	font-size: .5rem;
 	color: black;
-
-	scroll-snap-align: start;
-
 }
 .list-left{
 	display: flex;
@@ -1024,4 +798,52 @@ nav{
 
 	
 }
+
+
+
+
+
+
+#regions {
+	cursor: pointer;
+}
+  
+  /* The container <div> - needed to position the dropdown content */
+  #regions {
+	position: relative;
+	display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  #dropdown-regions {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	border-radius: 5px 30px 5px 30px;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 10;
+  }
+  
+  /* Links inside the dropdown */
+  #dropdown-regions h2 {
+	color: black;
+	margin: 10px;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  #dropdown-regions h2:hover {
+	color: #f1f1f1;
+	background-color: #464646;
+	border-radius: 15px;
+}
+  
+  /* Show the dropdown menu on hover */
+  #regions:hover #dropdown-regions {
+	display: block;
+  }
+  
 
