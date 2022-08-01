@@ -89,7 +89,7 @@ function updateBase(pokemon){
 	weight.classList.add('base-text', 'weight');
 	height.classList.add('base-text', 'height');
 	weight.textContent = `weight :  ${pokemon.weight} Kg`;
-	height.textContent = `height :  ${pokemon.height} M`;
+	height.textContent = `height :  ${pokemon.height}0 Cm`;
 
 	baseDiv.appendChild(weight);
 	baseDiv.appendChild(height);
@@ -285,12 +285,12 @@ const input = document.querySelector("input");
 input.addEventListener("keyup", (event) => {
   if (event.key === "Enter") {
 	let searchQuery = input.value;
-	if (typeof searchQuery == 'string')
-	{
-		searchQuery = searchQuery.toLowerCase();
-		selectPokemonbyName(searchQuery);
-	}
+	if (!input.value)
+		return ;
+	else if (typeof searchQuery == 'string')
+		selectPokemonbyName(searchQuery.toLowerCase());
 	else if (typeof searchQuery == 'number')
 		selectPokemonbyId(searchQuery);
+	input.value = '';
   }
 });
