@@ -1,13 +1,14 @@
 const 	pokdexURL = 'https://pokeapi.co/api/v2/pokemon/';
+const	flavourURL = 'https://pokeapi.co/api/v2/pokemon-species/';
 const 	nameListDiv = document.querySelector('.name-list');
+const 	illustartion = document.querySelector('.poke-illustaration');
+const 	searchInput = document.querySelector("input");
 let 	selected = null;
-let 	illustartion = document.querySelector('.poke-illustaration');
+let 	allowShiny = false;
+let 	isChangingRegion = false;
+let 	allowRegionChange = false;
 
-const allowShiny = false;
-let isChangingRegion = false;
-
-
-let allowRegionChange = false;
+let selectedRegion = null;
 
 const		regions = {
 	'kanto': {
@@ -47,10 +48,6 @@ const		regions = {
 	},
 }
 
-let selectedRegion = regions.kanto;
-
-
-
 const typeColors = {
 	'normal': '#A8A77A',
 	'fire': '#EE8130',
@@ -80,27 +77,25 @@ function removeChildren(parent){
 	}
 }
 
-function updateBase(pokemon){
+async function updateBase(pokemon){
+    res = await fetch(pokemon["species"]["url"]);
+    let pokemonDesc = await res.json();
+	let entries = pokemonDesc.flavor_text_entries;
+
 	const baseDiv = document.querySelector('.poke-base');
 	removeChildren(baseDiv);
-	
-	const weight = document.createElement('h1');
-	const height = document.createElement('h1');
-	weight.classList.add('base-text', 'weight');
-	height.classList.add('base-text', 'height');
-	weight.textContent = `weight :  ${pokemon.weight} Kg`;
-	height.textContent = `height :  ${pokemon.height}0 Cm`;
 
-	baseDiv.appendChild(weight);
-	baseDiv.appendChild(height);
-	
-	stats = pokemon.stats;
-	stats.forEach(stat => {
-		const elem = document.createElement('h1');
-		elem.classList.add('base-text');
-		elem.textContent = `${stat.stat.name} :  ${stat.base_stat}`;
-		baseDiv.appendChild(elem);
-	})
+	for (var entry of entries)
+	{
+		if (entry.language.name == 'en')
+		{
+			const elem = document.createElement('h1');
+			elem.classList.add('base-text');
+			elem.textContent = entry.flavor_text;
+			baseDiv.appendChild(elem);
+			break ;
+		}
+	}
 }
 
 function updateType(pokemon){
@@ -128,13 +123,11 @@ function updateIllustration(pokemon){
 	illustartion.src =  imgLink;
 }
 
-function updateSelection(pokemon){
+async function updateSelection(pokemon){
 	updateIllustration(pokemon);
-
 	updateType(pokemon);
-
-	updateBase(pokemon);
 	updateName(pokemon);
+	updateBase(pokemon);
 }
 
 async function selectPokemonByListClick () {
@@ -242,10 +235,6 @@ async function loadPokedex(){
 	allowRegionChange = true;
 }
 
-selectPokemonbyId(selectedRegion.min);
-loadPokedex();
-initDropDowns();
-
 
 function changeRegion(){
 	
@@ -275,25 +264,25 @@ function initDropDowns(){
 		regionButton.addEventListener('click', changeRegion);
 	});
 
-
+	searchInput.addEventListener("keyup", (event) => {
+		if (event.key === "Enter") {
+			searchInput.classList.remove('shake');
+			let searchQuery = searchInput.value;
+			if (!searchInput.value)
+				return ;
+			else if (typeof searchQuery == 'string')
+				selectPokemonbyName(searchQuery.toLowerCase());
+			else if (typeof searchQuery == 'number')
+			selectPokemonbyId(searchQuery);
+	  }
+	});
 }
 
 
 
 
 
-
-const searchInput = document.querySelector("input");
-
-searchInput.addEventListener("keyup", (event) => {
-	if (event.key === "Enter") {
-		searchInput.classList.remove('shake');
-		let searchQuery = searchInput.value;
-		if (!searchInput.value)
-			return ;
-		else if (typeof searchQuery == 'string')
-			selectPokemonbyName(searchQuery.toLowerCase());
-		else if (typeof searchQuery == 'number')
-		selectPokemonbyId(searchQuery);
-  }
-});
+selectedRegion = regions.kanto;
+selectPokemonbyId(selectedRegion.min);
+loadPokedex();
+initDropDowns();
