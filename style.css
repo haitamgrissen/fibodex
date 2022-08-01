@@ -73,9 +73,20 @@ nav{
 	width: 	3rem;
 	height: 3rem;
 }
+
 #title-svg:hover{
-	width: 	3.1rem;
-	height: 3.1rem;
+	animation: rotation 0.5s infinite linear;
+
+	/* animation: rotation 15s steps(60, end) infinite; */
+}
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
 }
 
 
@@ -108,29 +119,25 @@ nav{
 
 
 
-#regions, #search {
+#regions, #search, #items {
 	cursor: pointer;
+	position: relative;
+	display: inline-block;
 }
   
 
-#regions, #search {
-	position: relative;
-	display: inline-block;
-  }
-  
-
-#dropdown-regions, #dropdown-search {
+#dropdown-regions, #dropdown-search, #dropdown-items {
 	display: none;
 	position: absolute;
 	background-color: #f9f9f9;
-	border-radius: 5px 30px 5px 30px;
+	border-radius: 30px 5px 30px 5px;
 	min-width: 160px;
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	z-index: 100;
   }
   
 
-#dropdown-regions h2, #dropdown-search input {
+#dropdown-regions h2, #dropdown-search input, #dropdown-items h2{
 	color: black;
 	margin: 10px;
 	padding: 12px 16px;
@@ -140,12 +147,12 @@ nav{
   
   
 
-#regions:hover #dropdown-regions, #search:hover #dropdown-search {
+#regions:hover #dropdown-regions, #search:hover #dropdown-search, #items:hover #dropdown-items {
 	display: block;
   }
   
 
-#dropdown-search input:hover, input, #dropdown-regions h2:hover {
+#dropdown-search input:hover, input, #dropdown-regions h2:hover,  #dropdown-items h2:hover {
 	color: #f1f1f1;
 	background-color: #464646;
 	border-radius: 15px;
@@ -155,6 +162,9 @@ nav{
 
 #dropdown-search{
 	transform: translate(-150px, 0px);
+}
+#dropdown-items,  #dropdown-regions{
+	transform: translate(-100px, 0px);
 }
 
 

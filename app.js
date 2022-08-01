@@ -2,14 +2,23 @@ const 	pokdexURL = 'https://pokeapi.co/api/v2/pokemon/';
 const	flavourURL = 'https://pokeapi.co/api/v2/pokemon-species/';
 const 	nameListDiv = document.querySelector('.name-list');
 const 	illustartion = document.querySelector('.poke-illustaration');
+const	titleLogo = document.querySelector('#title-svg');
 const 	descDiv = document.querySelector('.poke-base');
 const 	searchInput = document.querySelector("input");
 let 	selected = null;
 let 	allowShiny = false;
 let 	isChangingRegion = false;
 let 	allowRegionChange = false;
+let		selectedRegion = null;
 
-let selectedRegion = null;
+
+/* Social media links */
+
+const githubURL = 'https://github.com/haitamgrissen/';
+
+
+
+
 
 const		regions = {
 	'kanto': {
@@ -260,6 +269,10 @@ function changeRegion(){
 
 
 function initDropDowns(){
+
+	titleLogo.addEventListener('click', (event) => {
+		window.open(githubURL).focus();
+	});
 
 	const regionDropDown = document.querySelector('#dropdown-regions');
 	
