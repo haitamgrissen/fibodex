@@ -159,7 +159,26 @@ nav{
 
 
 
-
+.shake {
+	animation: shake 0.3s;
+}
+  
+  @keyframes shake {
+	0% { transform: translate(1px, 1px) rotate(0deg); }
+	10% { transform: translate(-1px, -2px) rotate(-1deg); }
+	20% { transform: translate(-3px, 0px) rotate(1deg); }
+	30% { transform: translate(3px, 2px) rotate(0deg); }
+	40% { transform: translate(1px, -1px) rotate(1deg); }
+	50% { transform: translate(-1px, 2px) rotate(-1deg); }
+	60% { transform: translate(-3px, 1px) rotate(0deg); }
+	70% { transform: translate(3px, 1px) rotate(-1deg); }
+	80% { transform: translate(-1px, -1px) rotate(1deg); }
+	90% { transform: translate(1px, 2px) rotate(0deg); }
+	100% { 
+		transform: translate(1px, -2px) rotate(-1deg);
+		transform: scale(1.5);
+		}
+  }
 
 /*------------------------------------------------------------------------------------------*/
 /*------------------------------------------------------------------------------------------*/
@@ -240,7 +259,7 @@ nav{
 
 .unselected:hover{
 	box-shadow:  2px 2px 4px 0 rgb(0 ,0, 0 , 0.25);
-	border: 5px solid rgba(1, 1, 1, 0.3);
+	border: 5px solid rgba(255, 255, 255, 0.698);
 	transition: all .2s ease;
 	border-radius: 110px;
 }
@@ -250,9 +269,9 @@ nav{
 	background: black;
 	background: linear-gradient(-45deg, black 0%, black 49%, rgb(61, 223, 255) 50%, rgb(61, 223, 255) 100%);
 	box-shadow:  2px 2px 4px 0 rgb(0 ,0, 0 , 0.25);
-	border-color: white; /*linear-gradient(-45deg, black 0%, black 49%, rgb(61, 223, 255) 50%, rgb(61, 223, 255) 100%); */
 	transition: all .1s ease;
 	border-radius: 110px;
+	border-style: hidden;
 }
 
 

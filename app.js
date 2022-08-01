@@ -161,8 +161,9 @@ async function selectPokemonbyId(id)
 		const res = await fetch(pokdexURL + id);
 		let pokemon = await res.json();
 		updateSelection(pokemon);
+		searchInput.value = '';
 	} catch{
-		alert('Pokemon doesnt exist');
+		searchInput.classList.add('shake');
 	}
 }
 
@@ -172,8 +173,9 @@ async function selectPokemonbyName(name)
 		const res = await fetch(pokdexURL + name);
 		let pokemon = await res.json();
 		updateSelection(pokemon);
+		searchInput.value = '';
 	} catch{
-		alert('Pokemon doesnt exist');
+		searchInput.classList.add('shake');
 	}
 }
 
@@ -281,16 +283,17 @@ function initDropDowns(){
 
 
 
-const input = document.querySelector("input");
-input.addEventListener("keyup", (event) => {
-  if (event.key === "Enter") {
-	let searchQuery = input.value;
-	if (!input.value)
-		return ;
-	else if (typeof searchQuery == 'string')
-		selectPokemonbyName(searchQuery.toLowerCase());
-	else if (typeof searchQuery == 'number')
+const searchInput = document.querySelector("input");
+
+searchInput.addEventListener("keyup", (event) => {
+	if (event.key === "Enter") {
+		searchInput.classList.remove('shake');
+		let searchQuery = searchInput.value;
+		if (!searchInput.value)
+			return ;
+		else if (typeof searchQuery == 'string')
+			selectPokemonbyName(searchQuery.toLowerCase());
+		else if (typeof searchQuery == 'number')
 		selectPokemonbyId(searchQuery);
-	input.value = '';
   }
 });
