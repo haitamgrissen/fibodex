@@ -2,6 +2,7 @@ const 	pokdexURL = 'https://pokeapi.co/api/v2/pokemon/';
 const	flavourURL = 'https://pokeapi.co/api/v2/pokemon-species/';
 const 	nameListDiv = document.querySelector('.name-list');
 const 	illustartion = document.querySelector('.poke-illustaration');
+const 	descDiv = document.querySelector('.poke-base');
 const 	searchInput = document.querySelector("input");
 let 	selected = null;
 let 	allowShiny = false;
@@ -82,18 +83,23 @@ async function updateBase(pokemon){
     let pokemonDesc = await res.json();
 	let entries = pokemonDesc.flavor_text_entries;
 
-	const baseDiv = document.querySelector('.poke-base');
-	removeChildren(baseDiv);
 
+	removeChildren(descDiv);
+
+	let description = '';
 	for (var entry of entries)
 	{
 		if (entry.language.name == 'en')
 		{
-			const elem = document.createElement('h1');
-			elem.classList.add('base-text');
-			elem.textContent = entry.flavor_text;
-			baseDiv.appendChild(elem);
-			break ;
+			if (!description.includes(entry.flavor_text))
+			{
+				description += entry.flavor_text;
+				const elem = document.createElement('p');
+				elem.classList.add('base-text');
+				elem.textContent = entry.flavor_text;
+				descDiv.appendChild(elem);
+			}
+			//break ;
 		}
 	}
 }

@@ -314,19 +314,18 @@ nav{
 	margin: 1rem;
 }
 .poke-base{
-	margin-left: auto;
-	margin-right: auto;
-	text-align:left;
+	min-height: 50px;
 	background-color: rgba(255, 250, 243, .2);
 	border-radius: 1em;
 	box-shadow:  2px 2px 4px 0 rgb(0 ,0, 0 , 0.25);
 	width: 100%;
 	overflow-y: auto;
-	scroll-snap-type: y mandatory;
-	font-size: .4rem;
+
 }
+
 .base-text{
-	scroll-snap-align: start;
+	font-size: 1rem;
+	padding: 1rem;
 }
 
 .poke-base::-webkit-scrollbar{
