@@ -108,7 +108,7 @@ async function updateBase(pokemon){
 				elem.textContent = entry.flavor_text;
 				descDiv.appendChild(elem);
 			}
-			//break ;
+			//break ;// this break was here for one entry per pokemon
 		}
 	}
 }
@@ -290,7 +290,7 @@ function initDropDowns(){
 			if (!searchInput.value)
 				return ;
 			else if (typeof searchQuery == 'string')
-				selectPokemonbyName(searchQuery.toLowerCase());
+				selectPokemonbyName(searchQuery.toLowerCase().replace(' ', ''));
 			else if (typeof searchQuery == 'number')
 			selectPokemonbyId(searchQuery);
 	  }
