@@ -155,6 +155,8 @@ function updateIllustration(pokemon){
 
 	const imgLink = pokemon.sprites.other['official-artwork'].front_default;
 	illustartion.src =  imgLink;
+	illustartion.alt = pokemon.name + ' illustration';
+	illustartion.title = pokemon.name;
 }
 
 async function updateSelection(pokemon){
