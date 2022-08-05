@@ -327,10 +327,10 @@ nav{
 }
 
 .type-box{
+	/* background: radial-gradient(circle at 60% 30%, rgb(255, 211, 211), rgb(255, 109, 109) 50%, rgb(26, 26, 26) 75%); */
 	aspect-ratio: 1/1;
 	width:50px;
 	border-radius: 50%;
-	color:white;
 	font-weight: bold;
 	text-align: center;
 	text-justify: center;

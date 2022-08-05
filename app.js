@@ -117,6 +117,10 @@ async function updateBase(pokemon){
 	}
 }
 
+function shadeColor(color, amount) {
+    return '#' + color.replace(/^#/, '').replace(/../g, color => ('0'+Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2));
+}
+
 function updateType(pokemon){
 	const typeDiv = document.querySelector('.poke-type');
 	removeChildren(typeDiv);
@@ -125,9 +129,12 @@ function updateType(pokemon){
 		const typeBox = document.createElement('div');
 		typeBox.classList.add('type-box');
 		//typeBox.textContent = type.type.name;
-		//typeBox.style.border = `2px solid ${types[type]}`;
-		typeBox.style.backgroundColor = types[type.type.name].color;
-		
+
+		const color = types[type.type.name].color;
+		const darkColor = shadeColor(color, -100);
+		typeBox.style.setProperty('background' ,`radial-gradient(circle at 60% 30%, ${color}, ${color} 50%, ${darkColor} 75%)`);
+		typeBox.style.setProperty('box-shadow', `5px -5px 25px 5px ${color}`);
+
 		const typeImg = document.createElement('img');
 		typeImg.title = type.type.name;
 		typeImg.classList.add('type-icon');
