@@ -245,11 +245,11 @@ function	creatPokemonListEntry(pokemon){
 
 	const listImg = document.createElement('img');
 	listImg.classList.add('poke-sprite');
-
 	const random = Math.floor((Math.random() * 10)) % 2;
 	const src = (random === 0 && allowShiny) ? pokemon.sprites.front_shiny : pokemon.sprites.front_default;
 	listImg.src = src;
-
+	listImg.alt = pokemon.name + ' thumbnail';
+	listImg.title = pokemon.name;
 	leftDiv.appendChild(listImg);
 	leftDiv.appendChild(listNoH1);
 
