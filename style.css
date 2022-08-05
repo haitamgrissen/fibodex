@@ -17,18 +17,23 @@
 
 body {
 	background: rgb(255,238,216);
+
 	background: linear-gradient(90deg, rgba(255,238,216,1) 0%, rgba(255,238,216,1) 10%, rgba(178,242,255,1) 50%);
+
 	background-repeat: no-repeat;
 	margin: 0px;
 	height: 100%;
-
 }
+
+
 
 .container{
 	display: flex;
 	justify-content: space-between; 
 	align-items: center;
-	background-image: url(test.svg);
+	background-image: url(src/backgrounds/hold.svg);
+	background-size: cover;
+	background-position:center;
 	background-repeat: no-repeat;
 }
 
@@ -47,7 +52,7 @@ body {
 
 nav{
 	background-color: rgba(85, 85, 85, 0.31);
-	transform: translate(0px, 20px);
+	/* transform: translate(0px, 20px); */
 	height: 5vh;
 	color: black;
 	display: flex;
@@ -299,8 +304,16 @@ nav{
 	justify-content: space-between;
 }
 
+.poke-illustaration{
+	margin-left: auto;
+	margin-right: auto;
+	aspect-ratio: 1/1;
+	width: 20%;
+}
+
 .info-name{
 	text-transform: uppercase;
+	margin: 0;
 	font-size: 2.5rem;
 	font-style: bold;
 	text-align: center;
@@ -314,23 +327,31 @@ nav{
 }
 
 .type-box{
+	aspect-ratio: 1/1;
+	width:50px;
+	border-radius: 50%;
 	color:white;
 	font-weight: bold;
 	text-align: center;
 	text-justify: center;
 	font-size: 1rem;
-	border-radius: 1rem;
+	/* border-radius: 1rem; */
 	box-shadow:  2px 2px 4px 0 rgb(0 ,0, 0 , 0.25);
 	margin: 1rem;
 }
+
+.type-icon{
+	width: 	60%;
+	height: 60%;
+}
+
 .poke-base{
-	min-height: 50px;
+	min-height: 100px;
 	background-color: rgba(255, 250, 243, .2);
 	border-radius: 1em;
 	box-shadow:  2px 2px 4px 0 rgb(0 ,0, 0 , 0.25);
 	width: 100%;
 	overflow-y: auto;
-
 }
 
 .base-text{
@@ -360,15 +381,10 @@ nav{
 /*------------------------------------------------------------------------------------------*/
 
 footer {
-	position: fixed;
-	left: 0;
-	bottom: 0;
 	width: 100%;
-	height: 2vh;
-	background-color: rgba(0, 0, 0, 0.3);
-	color: white;
-	text-align: center;
-  }
+	height: 3vh;
+	background-color: rgba(85, 85, 85, 0.31);
+}
 
 @media screen and (max-width: 768px){
 	.container{
@@ -390,12 +406,10 @@ footer {
 		transform: translate(-5px, 0px);
 	}
 	.type-box{
-		width: 25vw;
-		height: 1.5rem;
+		aspect-ratio: 1/1;
+		width:30px;
 	}
 	.poke-illustaration{
-		margin-left: auto;
-		margin-right: auto;
 		width: 30%;
 	}
 }
@@ -411,23 +425,18 @@ footer {
 	.blocks{
 		height: 90vh;
 		width: 45vw;
-		margin: 2rem;
+		margin: 1rem;
 	}
 	.unselected:hover{
 		transform: translate(-10px, 0px);
 	}
 	.type-box{
-		width: 25%;
-		height: 2rem;
+
 	}
-	.poke-illustaration{
-		margin-left: auto;
-		margin-right: auto;
-		width: 60%;
-	}
+
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1025px) {
 	body {
 		overflow: hidden
 	}
@@ -442,17 +451,9 @@ footer {
 	.unselected:hover{
 		transform: translate(-10px, 0px);
 	}
-	.selected{
-		transform: translate(-15px, -10px);
-	}
+
 	.type-box{
-		width: 15%;
-		height: 2rem;
-	}
-	.poke-illustaration{
-		margin-left: auto;
-		margin-right: auto;
-		width: 60%;
+
 	}
 }
 

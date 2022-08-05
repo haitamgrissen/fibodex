@@ -17,8 +17,7 @@ let		selectedRegion = null;
 const githubURL = 'https://github.com/haitamgrissen/';
 
 
-
-
+let listBall = null;
 
 const		regions = {
 	'kanto': {
@@ -48,35 +47,40 @@ const		regions = {
 	},
 	'kalos': {
 		'min': 650,
-		'max': 720,
+		'max': 721,
+		'region': 'kalos',
+	},
+	'alola': {
+		'min': 722,
+		'max': 807,
 		'region': 'kalos',
 	},
 	'all': {
 		'min': 1,
-		'max': 720,
+		'max': 807,
 		'region': 'all',
 	},
 }
 
-const typeColors = {
-	'normal': '#A8A77A',
-	'fire': '#EE8130',
-	'water': '#6390F0',
-	'electric': '#F7D02C',
-	'grass': '#7AC74C',
-	'ice': '#96D9D6',
-	'fighting': '#C22E28',
-	'poison': '#A33EA1',
-	'ground': '#E2BF65',
-	'flying': '#A98FF3',
-	'psychic': '#F95587',
-	'bug': '#A6B91A',
-	'rock': '#B6A136',
-	'ghost': '#735797',
-	'dragon': '#6F35FC',
-	'dark': '#705746',
-	'steel': '#B7B7CE',
-	'fairy': '#D685AD',
+const types = {
+	'normal': 	{'color':'#A8A77A', },
+	'fire': 	{'color':'#EE8130', },
+	'water': 	{'color':'#6390F0', },
+	'electric': {'color':'#F7D02C', },
+	'grass': 	{'color':'#7AC74C', },
+	'ice': 		{'color':'#96D9D6', },
+	'fighting': {'color':'#C22E28', },
+	'poison': 	{'color':'#A33EA1', },
+	'ground': 	{'color':'#E2BF65', },
+	'flying': 	{'color':'#A98FF3', },
+	'psychic': 	{'color':'#F95587', },
+	'bug': 		{'color':'#A6B91A', },
+	'rock': 	{'color':'#B6A136', },
+	'ghost': 	{'color':'#735797', },
+	'dragon': 	{'color':'#6F35FC', },
+	'dark': 	{'color':'#705746', },
+	'steel': 	{'color':'#B7B7CE', },
+	'fairy': 	{'color':'#D685AD', },
 };
 
 function removeChildren(parent){
@@ -116,12 +120,20 @@ async function updateBase(pokemon){
 function updateType(pokemon){
 	const typeDiv = document.querySelector('.poke-type');
 	removeChildren(typeDiv);
+	const typeIconsURL = 'https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/Others/type-icons/';
 	pokemon.types.forEach((type) => {
 		const typeBox = document.createElement('div');
 		typeBox.classList.add('type-box');
-		typeBox.textContent = type.type.name;
-		typeBox.style.border = `2px solid ${typeColors[type]}`;
-		typeBox.style.backgroundColor = typeColors[type.type.name];
+		//typeBox.textContent = type.type.name;
+		//typeBox.style.border = `2px solid ${types[type]}`;
+		typeBox.style.backgroundColor = types[type.type.name].color;
+		
+		const typeImg = document.createElement('img');
+		typeImg.title = type.type.name;
+		typeImg.classList.add('type-icon');
+		typeImg.src = typeIconsURL + type.type.name + '.svg';
+
+		typeBox.append(typeImg);
 
 		typeDiv.appendChild(typeBox);
 	});
@@ -151,6 +163,8 @@ async function selectPokemonByListClick () {
 
 	if (selected)
 	{
+
+		// rightDiv.append(listNameH1, listBall);
 		selected.classList.add('unselected');
 		selected.classList.remove('selected');
 	}
@@ -158,6 +172,11 @@ async function selectPokemonByListClick () {
 	selected = document.querySelector(`[data-id="${pokemon.id}"]`);
 	selected.classList.remove('unselected');
 	selected.classList.add('selected');
+
+	//Add Selection Flat Pokeball icon
+	const rightDiv = selected.firstChild;
+	rightDiv.append(listBall);
+	// console.log(rightDiv);
 
 	updateSelection(pokemon);
 
@@ -202,11 +221,9 @@ function	creatPokemonListEntry(pokemon){
 	const name = `${pokemon.name}`;
 	listNameH1.textContent = name;
 
-	const listBall = document.createElement('img');
-	listBall.classList.add('pokeball-sprite');
-	listBall.src = 'balltest.svg';
 
-	rightDiv.append(listNameH1, listBall);
+	rightDiv.append(listNameH1);
+
 
 	const leftDiv = document.createElement('div');
 	leftDiv.classList.add('list-left');
@@ -299,7 +316,9 @@ function initDropDowns(){
 
 
 
-
+listBall = document.createElement('img');
+listBall.classList.add('pokeball-sprite');
+listBall.src = 'src/icons/listSelectedPokeBall.svg';
 
 selectedRegion = regions.kanto;
 selectPokemonbyId(selectedRegion.min);

@@ -6,52 +6,59 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>FiboDex</title>
 		<meta name="description" content="">
-		<link rel="icon" type="image/x-icon" href="icon.svg">
+		<link rel="icon" type="image/x-icon" href="src/icons/favicon.svg">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="style.css">
 		<script src="app.js" async defer></script>
 	</head>
 	<body>
+
 		<nav>
 			<div id="title">
 				<h1>FIB</h1>
-				<img  id="title-svg" src="pokeball.svg" alt="pokeball">
+				<img id="title-svg" src="src/icons/pokelogo.svg" alt="pokeball">
 				<h1>DEX</h1>
 			</div>
 			<div class="nav-buttons">
-				<button class="nav-button" id="regions">Regions	
+				<button class="nav-button" id="regions">Regions
 					<div id="dropdown-regions">
-					  <h2 data-region="kanto">Kanto</h2>
-					  <h2 data-region="johto">Johto</h2>
-					  <h2 data-region="hoenn">Hoenn</h2>
-					  <h2 data-region="sinnoh">Sinnoh</h2>
-					  <h2 data-region="unova">Unova</h2>
-					  <h2 data-region="kalos">Kalos</h2>
-					  <h2 data-region="all">All</h2>
+						<h2 data-region="kanto">Kanto</h2>
+						<h2 data-region="johto">Johto</h2>
+						<h2 data-region="hoenn">Hoenn</h2>
+						<h2 data-region="sinnoh">Sinnoh</h2>
+						<h2 data-region="unova">Unova</h2>
+						<h2 data-region="kalos">Kalos</h2>
+						<h2 data-region="alola">Alola</h2>
+						<h2 data-region="all">All</h2>
 					</div>
 				</button>
-				<button class="nav-button" id="items">Items		
+				<button class="nav-button" id="items">Items
 					<div id="dropdown-items">
 						<h2 data-item="soon">Soon...</h2>
-					  </div>
+					</div>
 				</button>
-				<button class="nav-button" id="search">Search		
+				<button class="nav-button" id="search">Search
 					<div id="dropdown-search">
-						<input class="search-bar" name="q" type="text" placeholder="Enter Name/Number"  /></div>
+						<input class="search-bar" name="q" type="text" placeholder="Enter Name/Number" />
 					</div>
 				</button>
 			</div>
 		</nav>
+		
 		<div class="container">
 			<div id="scroll-list" class="blocks name-list">
-
+	
 			</div>
 			<div class="blocks infos">
 				<img class="poke-illustaration" src="" alt="Pokemon Sprite">
-				<h1	class="info-name"></h1>
+				<h1 class="info-name"></h1>
 				<div class="poke-type"></div>
 				<div class="poke-base"></div>
 			</div>
 		</div>
+
+		<footer>
+
+		</footer>
 	</body>
 </html>
