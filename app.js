@@ -277,6 +277,8 @@ async function loadPokedex(){
 }
 
 
+
+
 function changeRegion(){
 	
 	const region = this.getAttribute('data-region');
